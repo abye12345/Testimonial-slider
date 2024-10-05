@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="stylesheet" href="testimonal.css" />
+  </head>
+  <body>
+    <div class="one">
+      <img src="dev.jpg" />
+      <p>
+        I would also like to say thank you to all your staff. Wow what great<br />
+        service, I love it! Apple impressed me on multiple levels. ABYE Q
+      </p>
+    </div>
+
+    <div style="display: none" class="one">
+      <img src="t.jpg" />
+      <p>
+        I would also like to say thank you to all your staff. Wow what great<br />
+        service, I love it! Apple impressed To create a simple image slider that
+        changes im me on multiple levels. Rose Q
+      </p>
+    </div>
+    <div class="one" style="display: none">
+      <img src="a.webp" />
+      <p>
+        I would also like to say thank you to all your staff. Wow what great<br />
+        Below is an example of how to implement service, I love it! Apple
+        impressed me on multiple levels. Rosetta Q
+      </p>
+    </div>
+    <script>
+      let testimonials = document.querySelectorAll(".one");
+      let currentTestimonial = 0;
+
+      function showTestimonial(index) {
+        testimonials.forEach((testimonial, i) => {
+          if (i === index) {
+            testimonial.style.display = "block";
+          } else {
+            testimonial.style.display = "none";
+          }
+        });
+      }
+
+      function nextTestimonial() {
+        currentTestimonial = (currentTestimonial + 1) % testimonials.length;
+        showTestimonial(currentTestimonial);
+      }
+
+      let intervalId = setInterval(nextTestimonial, 2000);
+
+      function stopSlider() {
+        clearInterval(intervalId);
+      }
+
+      function startSlider() {
+        intervalId = setInterval(nextTestimonial, 2000);
+      }
+
+      document.addEventListener("visibilitychange", function () {
+        if (document.hidden) {
+          stopSlider();
+        } else {
+          startSlider();
+        }
+      });
+    </script>
+  </body>
+</html>
